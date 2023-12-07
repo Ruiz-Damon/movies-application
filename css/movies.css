@@ -1,6 +1,6 @@
 /* General body styles */
 body {
-    background-color: #f8f9fa; /* Light background for the entire body */
+    background-color: rgb(7, 39, 63);
     color: #333; /* Dark text for contrast */
 }
 
@@ -8,12 +8,14 @@ body {
 .movie-card {
     margin: 10px;
     padding: 20px;
-    background: #fff;
+    background: rgb(7, 39, 63); /* This is your desired blue background */
     border-radius: 5px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
     text-align: center;
     flex: 1;
     min-height: 200px;
+    box-sizing: border-box; /* Include padding and border in the width and height */
+    color: #fff; /* Make text color white for contrast */
 }
 
 /* Styles for the movie title */
@@ -45,3 +47,99 @@ body {
     background-color: #f0f0f0;
 }
 
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative; /* Change to relative */
+    display: inline-block;
+    float: right; /* Float to the right side */
+}
+
+/* Dropdown Content - Hidden by Default */
+.dropdown-content {
+    display: none; /* Hide by default */
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block; /* Show on hover */
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Additional styles to position the dropdown correctly */
+.card-body {
+    position: relative; /* Ensure the dropdown positions relative to the card-body */
+    padding-top: 20px; /* Add padding to give space for the dropdown */
+}
+
+/* Additional styles for the card bottom part */
+.card-bottom {
+    background-color: rgb(25, 28, 41); /* Set the background color */
+    color: #fff; /* Set text color to white for better contrast */
+    padding: 15px; /* Add some padding */
+    border-radius: 0 0 5px 5px; /* Match the card's border radius if it has one */
+}
+
+/* Styles for individual movie cards */
+.movie-card {
+    margin: 10px;
+    padding: 20px;
+    background: rgb(7, 39, 63); /* Set the desired blue as the card background */
+    border-radius: 5px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+    min-height: 200px;
+    box-sizing: border-box; /* Include padding and border in the width and height */
+}
+
+/* Remove or adjust the card-bottom class as it might not be needed anymore */
+.card-bottom {
+    .card-bottom {
+        background-color: rgb(25, 28, 41); /* Adjust if necessary */
+        padding: 15px;
+        border-radius: 0 0 5px 5px;
+    }
+}
+
+.sort-container {
+    position: absolute;
+    right: 20px; /* Adjust based on your layout */
+    top: 20px; /* Adjust based on your layout */
+    color: #fff;
+}
+
+.sort-container label {
+    margin-right: 10px;
+}
+
+.sort-container select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    background-color: #191c29;
+    color: #fff;
+}
