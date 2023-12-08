@@ -30,11 +30,6 @@
       "movieSummary": "Guardians of the Galaxy is awesome!"
     },
     {
-      "title": "Trolls",
-      "rating": 4,
-      "id": 6
-    },
-    {
       "title": "The Ring 3",
       "rating": 3,
       "id": 7
@@ -53,6 +48,26 @@
       "title": "Minority Report",
       "rating": "4",
       "id": 11
+    },
+    {
+      "title": "Avatar",
+      "rating": "4",
+      "id": 12
+    },
+    {
+      "title": "White Chicks",
+      "rating": 5,
+      "id": 13
+    },
+    {
+      "title": "Fast X",
+      "rating": "4",
+      "id": 14
+    },
+    {
+      "title": "Avatar 2",
+      "rating": "2",
+      "id": 15
     }
   ]
 }

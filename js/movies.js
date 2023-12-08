@@ -21,7 +21,7 @@ function injectModals() {
                     <h5 class="modal-title" id="addMovieModalLabel">Add New Movie</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body login-box bg-light-subtle">
                     <form id="add-movie-form">
                         <div class="mb-3">
                             <label for="modal-movie-title" class="form-label">Title</label>
@@ -31,7 +31,7 @@ function injectModals() {
                             <label for="modal-movie-rating" class="form-label">Rating</label>
                             <input type="number" class="form-control" id="modal-movie-rating" min="1" max="5" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Add Movie</button>
+                        <button type="submit" class=""><span></span><span></span><span></span><span></span> Add Movie</input>
                     </form>
                 </div>
             </div>
@@ -131,7 +131,7 @@ function createMovieElement(movie, posterUrl) {
     movieElement.className = 'col-12 col-md-4 col-lg-3 mb-3';
     movieElement.id = `movie-card-${movie.id}`;
     movieElement.innerHTML = `
-    <div class="card h-100">
+    <div class="card h-100" id="card-style">
         <img src="${posterUrl}" class="card-img-top" alt="${movie.title}">
         <div class="card-bottom">
             <div class="card-top">
