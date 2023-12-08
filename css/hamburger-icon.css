@@ -11,11 +11,12 @@
     margin-top: 40px;
     letter-spacing: 4px
 }
+
 .login-box form button {
     position: relative;
     display: inline-block;
     padding: 10px 20px;
-    color: #03e9f4;
+    color: #0099a0;
     font-size: 16px;
     text-decoration: none;
     text-transform: uppercase;
@@ -124,3 +125,32 @@
     }
 }
 
+/*Testing*/
+.modal-content{
+    /*transform: translate(-50%, -50%);*/
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+}
+
+.modal-header h5 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+}
+.modal-body button{
+    border: transparent;
+}
+#login-box{
+    /*transform: translate(-50%, -50%);*/
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+    color: #dddddd;
+}
+#add-movie-form{
+    color: #dddddd;
+}
