@@ -36,7 +36,7 @@
 
 <!-- Main Container -->
 <div class="container mt-3 login-box">
-    <form>
+    <form class="form-container">
         <!-- Button to trigger the Add Movie Modal -->
         <a type="button" class="bubbly-button" id="show-add-modal">
             <span></span>
@@ -45,21 +45,22 @@
             <span></span>
             Add Movie
         </a>
+        <!--   Ricky Moved This Section Here    -->
+        <!-- Sort  -->
+        <div class="sort-container">
+            <label for="sort">Sort by:</label>
+            <select id="sort" name="sort">
+                <option value="title">Title</option>
+                <option value="rating">Rating</option>
+            </select>
+        </div>
     </form>
+
     <!-- Loading Message -->
     <div id="loading-message" class="text-center">
         <div class="spinner-border text-primary" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-    </div>
-
-    <!-- Sort  -->
-    <div class="sort-container">
-        <label for="sort">Sort by:</label>
-        <select id="sort" name="sort">
-            <option value="title">Title</option>
-            <option value="rating">Rating</option>
-        </select>
     </div>
 
     <!-- Movies List -->

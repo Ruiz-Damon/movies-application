@@ -124,11 +124,18 @@
         border-radius: 0 0 5px 5px;
     }
 }
+/*Ricky Added This Section*/
+.form-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-bottom: 3em !important;
+}
 
 .sort-container {
     position: absolute;
-    right: 20px; /* Adjust based on your layout */
-    top: 20px; /* Adjust based on your layout */
+    top: 0;
+    right: 0;
     color: #fff;
 }
 
@@ -143,6 +150,13 @@
     background-color: #191c29;
     color: #fff;
 }
+
+.bubbly-button {
+    position: relative;
+    z-index: 1;
+    margin-top: 0 !important;
+}
+
 
 header{
     font-family: 'Bacasime Antique', serif;
