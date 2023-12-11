@@ -323,7 +323,7 @@ function updateMovieOnDOM(updatedMovie, posterUrl) {
 
         const posterImage = movieCard.querySelector('.card-img-top');
         posterImage.src = posterUrl;
-        posterImage.alt = updatedMovie.title; // Use updatedMovie.title for alt attribute
+        posterImage.alt = updatedMovie.title; //
     } else {
         console.error(`Movie card with ID movie-card-${updatedMovie.id} not found.`);
     }
@@ -333,11 +333,11 @@ function updateMoviePosterOnDOM(movieId, posterUrl) {
     // Find the movie card element by movie ID
     const movieCard = document.getElementById(`movie-card-${movieId}`);
     if (movieCard) {
-        // Select the poster image within the movie card
+
         const posterImage = movieCard.querySelector('.card-img-top');
-        // Update the poster image's src attribute to the new URL
+
         posterImage.src = posterUrl;
-        // Optionally update the alt attribute as well
+
         posterImage.alt = `Poster of the movie ${movieCard.querySelector('.card-title').textContent}`;
     } else {
         console.error(`Movie card with ID movie-card-${movieId} not found.`);
