@@ -355,9 +355,11 @@ body {
     color: #fff;
     text-align: center;
 }
+
 .modal-body button{
     border: transparent;
 }
+
 #login-box{
     /*transform: translate(-50%, -50%);*/
     background: rgba(0,0,0,.5);
@@ -366,7 +368,12 @@ body {
     border-radius: 10px;
     color: #dddddd;
 }
+
 #add-movie-form{
+    color: #dddddd;
+}
+
+#edit-movie-form{
     color: #dddddd;
 }
 

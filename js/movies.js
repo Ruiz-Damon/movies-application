@@ -38,7 +38,7 @@ function injectModals() {
         </div>
     </div>
 
-    <!-- Edit Movie Modal -->
+<!-- Edit Movie Modal -->
     <div class="modal fade" id="editMovieModal" tabindex="-1" aria-labelledby="editMovieModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -46,7 +46,7 @@ function injectModals() {
                     <h5 class="modal-title" id="editMovieModalLabel">Edit Movie</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body login-box">
                     <form id="edit-movie-form">
                         <input type="hidden" id="edit-movie-id">
                         <div class="mb-3">
@@ -57,7 +57,7 @@ function injectModals() {
                             <label for="edit-movie-rating" class="form-label">Rating</label>
                             <input type="number" class="form-control" id="edit-movie-rating" min="1" max="5" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                        <button type="submit" class="">Save Changes</button>
                     </form>
                 </div>
             </div>
@@ -101,29 +101,31 @@ function fetchMovies() {
         });
 }
 
-function fetchMoviePoster(title) {
-    const TMDB_SEARCH_URL = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}`;
+    function fetchMoviePoster(title) {
+        const TMDB_SEARCH_URL = `https://api.themoviedb.org/3/search/movie?api_key=${TMDB_KEY}&query=${encodeURIComponent(title)}`;
 
-    return fetch(TMDB_SEARCH_URL)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error(`Network response was not ok (${response.status} ${response.statusText})`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.results.length > 0 && data.results[0].poster_path) {
-                const posterPath = data.results[0].poster_path;
-                return `https://image.tmdb.org/t/p/w500${posterPath}`;
-            } else {
-                throw new Error('Poster not found');
-            }
-        })
-        .catch(error => {
-            console.error('Error fetching poster:', error);
-            throw error; // Rethrow the error to propagate it
-        });
-}
+        return fetch(TMDB_SEARCH_URL)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok (${response.status} ${response.statusText})`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.results.length > 0 && data.results[0].poster_path) {
+                    const posterPath = data.results[0].poster_path;
+                    return `https://image.tmdb.org/t/p/w500${posterPath}`;
+                } else {
+                    // Return path to default image
+                    return 'img/coming-soon-design-template.jpeg';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching poster:', error);
+                return 'img/coming-soon-design-template.jpeg';
+            });
+    }
+
 
 
 function createMovieElement(movie, posterUrl) {
@@ -150,11 +152,6 @@ function createMovieElement(movie, posterUrl) {
     `;
     return movieElement;
 }
-
-
-
-
-
 
 
 function setupAddMovieModalListener() {
@@ -201,25 +198,33 @@ function setupAddMovieModalListener() {
     }
 }
 
-function setupEditMovieModalListener() {
-    const moviesList = document.getElementById('movies-list');
-    moviesList.addEventListener('click', function(event) {
-        if (event.target.classList.contains('edit-btn')) {
-            event.preventDefault();
+    function setupEditMovieModalListener() {
+        const moviesList = document.getElementById('movies-list');
+        moviesList.addEventListener('click', function(event) {
+            if (event.target.classList.contains('edit-btn')) {
+                event.preventDefault();
 
-            let movieId = event.target.getAttribute('data-movie-id');
-            let movieElement = document.getElementById(`movie-card-${movieId}`);
-            let movieTitle = movieElement.querySelector('.card-title').textContent;
-            let movieRating = parseFloat(movieElement.querySelector('.card-text').textContent.replace(/[^0-9.]/g, ''));
+                let movieId = event.target.getAttribute('data-movie-id');
 
-            document.getElementById('edit-movie-id').value = movieId;
-            document.getElementById('edit-movie-title').value = movieTitle;
-            document.getElementById('edit-movie-rating').value = movieRating;
+                // Fetch the movie data from your JSON data
+                fetch('data/movies.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        let movie = data.movies.find(m => m.id == movieId);
+                        if (movie) {
+                            document.getElementById('edit-movie-id').value = movie.id;
+                            document.getElementById('edit-movie-title').value = movie.title;
+                            document.getElementById('edit-movie-rating').value = movie.rating;
+                        } else {
+                            console.error('Movie not found');
+                        }
+                    })
+                    .catch(error => console.error('Error fetching movie data:', error));
 
-            let editModal = new bootstrap.Modal(document.getElementById('editMovieModal'));
-            editModal.show();
-        }
-    });
+                let editModal = new bootstrap.Modal(document.getElementById('editMovieModal'));
+                editModal.show();
+            }
+        });
 
     let editForm = document.getElementById('edit-movie-form');
     if (editForm) {
@@ -249,7 +254,6 @@ function setupDeleteButtonListener() {
         }
     });
 }
-
 
 
 function deleteMovie(movieId) {
@@ -315,7 +319,7 @@ function updateMovieOnDOM(updatedMovie, posterUrl) {
     const movieCard = document.getElementById(`movie-card-${updatedMovie.id}`);
     if (movieCard) {
         movieCard.querySelector('.card-title').textContent = updatedMovie.title;
-        movieCard.querySelector('.card-text').textContent = `Rating: ${'★'.repeat(Math.floor(updatedMovie.rating))}${'☆'.repeat(5 - Math.floor(updatedMovie.rating))}`;
+        movieCard.querySelector('.card-text').textContent = `${'★'.repeat(Math.floor(updatedMovie.rating))}${'☆'.repeat(5 - Math.floor(updatedMovie.rating))}`;
 
         const posterImage = movieCard.querySelector('.card-img-top');
         posterImage.src = posterUrl;
@@ -339,40 +343,5 @@ function updateMoviePosterOnDOM(movieId, posterUrl) {
         console.error(`Movie card with ID movie-card-${movieId} not found.`);
     }
 }
-
-    function sortMoviesByTitle(moviesArray) {
-        return moviesArray.sort((a, b) => a.title.localeCompare(b.title));
-    }
-
-    function sortMoviesByRating(moviesArray) {
-        // Assuming higher ratings should come first
-        return moviesArray.sort((a, b) => b.rating - a.rating);
-    }
-
-    function sortAndDisplayMovies(sortType) {
-        const moviesListElement = document.getElementById('movies-list');
-        let sortedMovies;
-
-        if (sortType === 'title') {
-            sortedMovies = sortMoviesByTitle(movies);
-        } else if (sortType === 'rating') {
-            sortedMovies = sortMoviesByRating(movies);
-        }
-
-        // Clear current movies
-        moviesListElement.innerHTML = '';
-
-        // Add sorted movies
-        sortedMovies.forEach(movie => {
-            const movieElement = createMovieElement(movie, movie.posterUrl);
-            moviesListElement.appendChild(movieElement);
-        });
-    }
-
-
-    document.getElementById('sort').addEventListener('change', function(event) {
-        sortAndDisplayMovies(event.target.value);
-    });
-
 
 })();

@@ -27,7 +27,7 @@
     },
     {
       "title": "Titanic",
-      "rating": "3",
+      "rating": 4,
       "id": 9
     },
     {
@@ -57,18 +57,18 @@
     },
     {
       "title": "Avatar 2",
-      "rating": "2",
+      "rating": 4,
       "id": 15
     },
     {
-      "title": "Trolls 4",
-      "rating": 3,
+      "title": "Trolls",
+      "rating": 5,
       "id": 16
     },
     {
-      "title": "trolls 2",
-      "rating": "2",
-      "id": 17
+      "title": "Harsh Times",
+      "rating": 5,
+      "id": 18
     }
   ]
 }
