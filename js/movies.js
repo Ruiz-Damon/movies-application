@@ -89,7 +89,7 @@ function fetchMovies() {
                         moviesList.appendChild(movieElement);
                     })
                     .catch(() => {
-                        const movieElement = createMovieElement(movie, 'path_to_default_image.jpg');
+                        const movieElement = createMovieElement(movie, 'img/coming-soon-design-template.jpeg');
                         moviesList.appendChild(movieElement);
                     });
             });
@@ -185,7 +185,7 @@ function setupAddMovieModalListener() {
                             document.getElementById('movies-list').appendChild(movieElement);
                         })
                         .catch(() => {
-                            const movieElement = createMovieElement(data, 'path_to_default_image.jpg');
+                            const movieElement = createMovieElement(data, 'img/coming-soon-design-template.jpeg');
                             document.getElementById('movies-list').appendChild(movieElement);
                         });
                     addForm.reset();
