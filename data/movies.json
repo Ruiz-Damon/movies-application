@@ -3,14 +3,12 @@
     {
       "id": 1,
       "title": "Shrek",
-      "rating": 5,
-      "movieSummary": "Shrek is awesome!"
+      "rating": 5
     },
     {
       "id": 2,
       "title": "Forrest Gump",
-      "rating": 5,
-      "movieSummary": "Forrest Gump is awesome!"
+      "rating": 5
     },
     {
       "title": "Interstellar",
@@ -20,19 +18,12 @@
     {
       "id": 4,
       "title": "War of the Worlds",
-      "rating": 5,
-      "movieSummary": "War of the Worlds is awesome!"
+      "rating": 5
     },
     {
       "id": 5,
       "title": "Guardians of the Galaxy",
-      "rating": 5,
-      "movieSummary": "Guardians of the Galaxy is awesome!"
-    },
-    {
-      "title": "The Ring 3",
-      "rating": 3,
-      "id": 7
+      "rating": 5
     },
     {
       "title": "Titanic",
@@ -68,6 +59,16 @@
       "title": "Avatar 2",
       "rating": "2",
       "id": 15
+    },
+    {
+      "title": "Trolls 4",
+      "rating": 3,
+      "id": 16
+    },
+    {
+      "title": "trolls 2",
+      "rating": "2",
+      "id": 17
     }
   ]
 }
